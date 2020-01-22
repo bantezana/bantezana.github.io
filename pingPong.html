@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>PingPong </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Antezana</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Brandon A.</a></li>
+							<li class="active"><a href="generic.html">Ping Pong</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/brandon-antezana-775408137/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/bantezana" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Ping Pong<br />
+									Python Game</h1>
+									<p>A nostolgic game created in Python. Reference: github.com/bantezana/PingPong</p>
+								</header>
+								<div class="image main"><img src="images/pingPong2.PNG" alt="" /></div>
+								<p>In order to inhance my abilities in Python, In this small project I decided 
+									to create an old school game called Ping Pong using Turtle,
+									an API(Application Program Interface) than can shape and design structures in Python.</p>
+									<h2>Snippet of Python Code</h2>
+									<pre><code>import turtle
+
+wd = turtle.Screen()
+wd.title("Ping Pong")
+wd.bgcolor("black")
+wd.setup(width=800, height=600)
+wd.tracer(0)
+
+#score
+score1 = 0
+score2 = 0
+
+#player 1
+player1 = turtle.Turtle()
+player1.speed(0)
+player1.shape("square")
+player1.color("white")
+player1.shapesize(stretch_wid=5, stretch_len=1)
+player1.penup()
+player1.goto(-350, 0)
+
+#player 2
+player2 = turtle.Turtle()
+player2.speed(0)
+player2.shape("square")
+player2.color("white")
+player2.shapesize(stretch_wid=5, stretch_len=1)
+player2.penup()
+player2.goto(350, 0)
+
+
+#ball
+ball = turtle.Turtle()
+ball.speed(0)
+ball.shape("square")
+ball.color("white")
+ball.penup()
+ball.goto(0, 0)
+
+										
+</code></pre>
+								<p>I have also created for 2 players to play in a game with score and
+									and border functionalities. The ball goes faster the longer the rally is.
+								</p>
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="split contact">
+							
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">bantezana@my.uri.edu</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/brandon-antezana-775408137/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/bantezana" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>>
+						
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Brandon Antezana 2020</li><li>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

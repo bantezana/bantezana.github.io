@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Device Communication</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Antezana</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Brandon A.</a></li>
+							<li class="active"><a href="generic.html">Device Communication</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/brandon-antezana-775408137/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/bantezana" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Device Communication<br />
+									Programming</h1>
+									<p>Achieve a fully functional VR application of an already working AR product with
+										having a different system design for application display. allow for an 
+										interactive teaching experience
+									</p>
+								</header>
+								<div class="image main"><video width="820" height="440" src="videos/ELE408 demo.mp4" controls></video></div>
+									<p>VR and AR are popular among current and future technology.
+										We designed an AR based teaching application 
+										that handles user input for the Microsoft Hololens. Use FPGA board as a tool to establish control over the VR application,
+										Use sockets to establish connections using the wireless network, allow button/switches to act as controls that display movement in the application, and 
+										allow options for the user besides hand gestures.
+									</p>
+									<div class="image main"><img src="images/devCom2.PNG" alt="" /></div>
+								<p>Use a socket connection for communication between the board and android application in the VR HMD.
+									Register 2 types of inputs from controller, button input functionality and switch input functionality.
+									Take user input from mobile device and send a message to the DE1-Soc Board to display an action. In video games, similar to haptic 
+									feedback when controller vibrates if shot at while playing an FPS(frames per second). Register user input from board and send appropriate message 
+									to mobile device via UDP Broadcast, receive message in Unity C# script and initialize a message-specific command signal that will update the 
+									object by rotation, size change, etc. Send the command signal to the object script to realize the action desired and
+									Send message from button press in application to Hex display on board.
+								</p>
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="split contact">
+							
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">bantezana@my.uri.edu</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/brandon-antezana-775408137/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/bantezana" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>>
+						
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Brandon Antezana 2020</li><li>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
