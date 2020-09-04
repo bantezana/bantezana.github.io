@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Amazon Price Tracker </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Antezana</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Brandon A.</a></li>
+							<li class="active"><a href="generic.html">Amazon Price Tracker</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/brandon-antezana-775408137/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/bantezana" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Amazon Price Tracker<br />
+									</h1>
+									<p>A software that keeps track a specific item for the user and notifies if 
+										price has dropped.
+									</p>
+								</header>
+
+								<p>Using various API's such as requests, smtplib and BeautfulSoup, I manage to connect to
+									a URL of an Amazon item that the user is in. It catches the price integer from
+									the HTML code, and from there it notifies if the price has decreased at any moment in time.
+								</p>
+									<h2>Snippet of Python Code</h2>
+									<pre><code>
+def priceCheck():
+    page = requests.get(url)
+
+    soup = BeautifulSoup(page.content, 'html.parser')
+
+    #Titel and price
+    title = soup.find(id='productTitle')
+    titleText = title.get_text()
+    price = soup.find(id="priceblock_ourprice")
+    priceText = price.get_text()
+
+    #converter
+    convertPrice = float(priceText[1:7])
+    
+    print(convertPrice)
+    print(titleText)
+										
+</code></pre>
+								<p>Here is how the user can be notified is by email. 
+								</p>
+							
+							<pre><code>
+subject= 'Price on Item Went Down!!'
+body = 'Check the Link if the price is right https://www.amazon.com/MSI-Gaming-RTX-2080-Super/dp/B07VDMGYGZ/ref=sr_1_1?keywords=gtx+2080&qid=1577723642&sr=8-1'
+							
+message = f"Subject: {subject}\n\n{body}"
+							
+server.sendmail
+print('HEY, Email has been sent!')
+																		
+							</code></pre>
+							<div class="image main"><img src="images/picPriceTrack2.PNG" alt="" /></div>
+							<p>In summary, this software is targeted for users who do not 
+								have enough funds to purchase an item but is willing
+								to wait and/or save for later time to buy.
+							</p>
+						</section>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="split contact">
+							
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">bantezana@my.uri.edu</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/brandon-antezana-775408137/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/bantezana" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>>
+						
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Brandon Antezana 2020</li><li>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
