@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Park. Disease Research </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Antezana</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Brandon A.</a></li>
+							<li class="active"><a >Park. Disease Research Data</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/brandon-antezana-775408137/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/bantezana" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Parkinsons Disease Research Data <br />
+									</h1>
+									<p>A software that takes data from patients when using the motion capture suit.
+									</p>
+								</header>
+
+								<p>During my time in helping Professor Kunal Mankodiya on finding ways to collect
+									data from MOCAP(motion capture suit), we decided to work on Python, where as
+									the GUI(graphical user interface) will be built and functionalities as well.
+									I began to work alongside with graduate students to complete this task. I began
+									my work in researching on how to implement a GUI with clickable buttons that 
+									has the function of collecting data, choosing what parts of the MOCAP to be
+									turned on, and save data to an excel file. 
+								</p>
+								<h2>Snippet of Python Code</h2>
+								
+							<pre><code>
+print("=============================")
+print("Broadcaster calls")
+print("=============================")
+device_list = ts_api.getComPorts()
+
+all_list = []
+sensor_list = []
+chosen_sensor_list = []
+
+l_shoulder = r_shoulder = l_upper_arm = l_lower_arm = l_hand = r_upper_arm = head= False
+hips = chest = r_lower_arm = r_hand = l_upper_leg = l_lower_leg = l_foot = True
+r_upper_leg = r_lower_leg = r_foot = True
+
+sensorID_string_to_sensorName = {
+"'"+str("<YEI3Space WL:1200085A>")+"'": l_shoulder,
+"'"+str("<YEI3Space WL:1200085B>")+"'": r_shoulder,
+"'"+str("<YEI3Space WL:1200085C>")+"'": l_upper_arm,
+"'"+str("<YEI3Space WL:1200085D>")+"'": l_lower_arm,
+"'"+str("<YEI3Space WL:1200085E>")+"'": l_hand,
+"'"+str("<YEI3Space WL:1200085F>")+"'": r_upper_arm,
+"'"+str("<YEI3Space WL:12000857>")+"'": head,
+"'"+str("<YEI3Space WL:12000858>")+"'": hips,
+"'"+str("<YEI3Space WL:12000859>")+"'": chest,
+"'"+str("<YEI3Space WL:12000860>")+"'": r_lower_arm,
+"'"+str("<YEI3Space WL:12000861>")+"'": r_hand,
+"'"+str("<YEI3Space WL:12000862>")+"'": l_upper_leg,
+"'"+str("<YEI3Space WL:12000863>")+"'": l_lower_leg,
+"'"+str("<YEI3Space WL:12000864>")+"'": l_foot,
+"'"+str("<YEI3Space WL:12000865>")+"'": r_upper_leg,
+"'"+str("<YEI3Space WL:12000866>")+"'": r_lower_leg,
+"'"+str("<YEI3Space WL:12000867>")+"'": r_foot
+}
+for device_port in device_list:
+com_port, friendly_name, device_type = device_port
+device = None
+if device_type == "USB":
+	device = ts_api.TSUSBSensor(com_port=com_port)
+elif device_type == "DNG":
+	device = ts_api.TSDongle(com_port=com_port)
+elif device_type == "WL":
+	device = ts_api.TSWLSensor(com_port=com_port)
+elif device_type == "EM":
+	device = ts_api.TSEMSensor(com_port=com_port)
+elif device_type == "DL":
+	device = ts_api.TSDLSensor(com_port=com_port)
+elif device_type == "BT":
+	device = ts_api.TSBTSensor(com_port=com_port)
+
+if device is not None:
+	all_list.append(device)
+	if device_type != "DNG":
+		sensor_list.append(device)
+	else:
+		for i in range(6): # Only checking the first six logical indexes
+			sens = device[i]
+			if sens is not None:
+				sensor_list.append(sens)
+				if sensorID_string_to_sensorName.get("'"+str(sens)+"'") is True:
+					chosen_sensor_list.append(sens)
+
+									
+							</code></pre>
+							
+							<p>Also when we enable the registers to collect data from. we then start streaming and 
+								record the run process. Below here is the coding process on how the stream was 
+								enabled as well as having multiple processes enabled.
+							</p>
+							<pre><code>
+ts_api.global_broadcaster.setStreamingTiming(   interval=10000,
+						duration=4294967295,
+						delay=200000,
+						delay_offset=0,
+						filter=chosen_sensor_list)
+ts_api.global_broadcaster.setStreamingSlots(
+						slot0='getSerialNumber',
+						slot1='getRawAccelerometerData',
+						slot2='getBatteryPercentRemaining',
+						filter=chosen_sensor_list)
+ts_api.global_broadcaster.startStreaming(filter=chosen_sensor_list)
+ts_api.global_broadcaster.startRecordingData(filter=chosen_sensor_list)
+##start_time = time.clock()
+##while time.clock() - start_time < 5:
+##    with open('workfile.txt', 'w+') as f:
+##        f.write(str(ts_api.global_broadcaster.writeRead('_getStreamingBatch')))
+##    f.close()
+time.sleep(10)
+ts_api.global_broadcaster.stopRecordingData(filter=sensor_list)
+ts_api.global_broadcaster.stopStreaming(filter=sensor_list)
+for sensor in sensor_list:
+print('Sensor({0}) stream_data len={1}'.format( sensor.serial_number_hex,
+									len(sensor.stream_data)))
+
+## Now close the ports.
+for device in all_list:
+device.close()	
+							</code></pre>
+							<p>Spending alot of time in making the process smoothly as I can,
+								I manage to make the process complete and ready for testing when
+								using MOCAP device. Throughout multiple tests on running the program,
+								there was data recording but was a little difficult to dertmine which register 
+								of the MOCAP device was activated. But the results were great and managed to save
+								them to a text file and transfered through excel. Results are shown below.
+							</p>
+							<div class="center"><img src="images/picGUIData.PNG" style="display: block;
+								margin-left: auto;
+								margin-right: auto;
+								width: 50%;" /></div>
+							<p>The time spent researching ways to collect data has helped greatly in determining 
+								the different values of patients who have been affected by Parkinon's Disease. With 
+								this software that has been built, the future of treating patients will become much 
+								easier for doctors and seeing how patients are effected by it.
+							</p>
+						</section>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="split contact">
+							
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">bantezana@my.uri.edu</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/brandon-antezana-775408137/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/bantezana" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>>
+						
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Brandon Antezana 2020</li><li>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

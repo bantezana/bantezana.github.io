@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Virtual Reality Research </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Antezana</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Brandon A.</a></li>
+							<li class="active"><a href="generic.html">Virtual Reality Research</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/brandon-antezana-775408137/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/bantezana" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Virtual Reality Research<br />
+									</h1>
+									<p>Work revolving around Unity, Microsoft Hololens, and communication 
+										between devices.
+									</p>
+								</header>
+
+								<p>Throughout my time with Professor Bin Li and his graduate students, I was 
+									tasked to join in their research development in Virtual Reality and
+									using Unity engine to run simulated applications. 
+								</p>
+								<p>One of the projects I worked on is adding on an xbox controller, option to a 
+									virtual reality class, where users can interact objects and option menus
+									to easily select or view features. By doing so I had to research the properties of
+									the controller and its functionalities on performance. Setting each button and 
+									analog stick to do a specific task when it is enabled. Using Unity, I was able to
+									develop a C# code that triggers the controller and do the tasks its programmed to do. 
+									Videos and documentation can be found below.  
+								</p>	
+
+								
+								<div class="centerVideo"><iframe width="820" height="440" src="https://www.youtube.com/embed/_8OvjFjjRgo" style="display: block;
+									margin-left: auto;
+									margin-right: auto;
+									width: 70%;"></iframe> 
+								<div><iframe width="820" height="440" src="https://www.youtube.com/embed/JHV2FcAQtFI" style="display: block;
+									margin-left: auto;
+									margin-right: auto;
+									width: 70%;"></iframe>
+								<div class="center"><img src="images/picControllerDoc.PNG" style="display: block;
+									margin-left: auto;
+									margin-right: auto;
+									width: 50%;" /></div>						
+								
+								<p>But now coming with the idea of communication between devices
+									where as the clients can connect to host to a server. I tested
+									a mock server in order for different devices to connect to one device and
+									see the movements that the host makes. A post request to the Microsoft Hololens
+
+								</p>	
+
+								
+							<pre><code>
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
+namespace ConsoleApp1
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			PostRequest("http://posttestserver.com/post.php");
+
+			Console.ReadKey();
+		}
+
+		async static void PostRequest(string url)
+		{
+			//Getting files is 
+			IEnumerable<KeyValuePair<string, string>> queries = new List<KeyValuePair<string, string>>()
+			{
+				new KeyValuePair<string, string>("1", "test_1")
+			};
+			HttpContent formcontent = new FormUrlEncodedContent(queries);
+			using (HttpClient client = new HttpClient())
+			{
+				using (HttpResponseMessage response = await client.PostAsync(url,formcontent))
+				{
+					using (HttpContent content = response.Content)
+					{
+						string mycontent = await content.ReadAsStringAsync();
+						HttpContentHeaders headers = content.Headers;
+
+						Console.WriteLine(headers);
+					}
+				}
+			}
+		}
+	}
+}
+																		
+							</code></pre>>
+							<p>With some reworks on algortythmsm the applications were successfully made. With the
+								guidance of Profressor Bin Li and graduate students Xiangqi Kong and Turi Latella to
+								make my idea possible to further better this projects.
+							</p>
+						</section>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="split contact">
+							
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">bantezana@my.uri.edu</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/brandon-antezana-775408137/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/bantezana" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>>
+						
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Brandon Antezana 2020</li><li>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
